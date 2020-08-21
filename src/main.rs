@@ -20,6 +20,7 @@ use rand::prelude::*;
 // Event handlers
 impl event::EventHandler for Mesh {
     fn update(&mut self, ctx: &mut ggez::Context) -> ggez::GameResult {
+        // NOT DONE for debugging only
         if keyboard::is_key_pressed(ctx, KeyCode::Up) {
             self.camera.rotation.x += 1.0;
         }
@@ -77,10 +78,8 @@ pub fn main() -> ggez::GameResult {
     let cb = ggez::ContextBuilder::new("my-engine", "littleTitan");
     let (ctx, event_loop) = &mut cb.build()?;
     let mut camera: Camera = Camera::new(Vec3d::new(0.0, 0.0, -6.0), Vec3d::new(0.0, 0.0, 0.0), 10000.0, 0.1, 130.0, ctx);
-    //camera.forward.y_axis_rotation(45.0, camera.position.x, camera.position.z);
     let state = &mut Mesh::new(ctx, camera)?;
     ggez::graphics::set_window_title(ctx, "My Engine");
-    //state.form_cube();
     state.from_file("models/xyz.stl");
     event::run(ctx, event_loop, state)
 }

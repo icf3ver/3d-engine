@@ -3,7 +3,6 @@ use crate::mesh::Mesh;
 use crate::triangle::Triangle;
 use crate::vec3d::Vec3d;
 
-
 use ggez;
 
 #[derive(Copy, Clone)]
