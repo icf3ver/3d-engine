@@ -6,6 +6,7 @@ pub struct Matrix4x4 {
 }
 
 impl Matrix4x4{
+    //bad
     pub fn multiply_vector(&mut self, i: &Vec3d) -> Vec3d {
         let mut o: Vec3d = Vec3d::new(0.0, 0.0, 0.0);
         o.x = i.x * self.m[0][0] + i.y * self.m[1][0] + i.z * self.m[2][0] + self.m[3][0];

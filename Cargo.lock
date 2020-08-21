@@ -1171,6 +1171,7 @@ version = "0.1.0"
 dependencies = [
  "byteorder",
  "ggez",
+ "nalgebra",
  "rand 0.7.3",
 ]
 

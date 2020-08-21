@@ -13,33 +13,12 @@ use crate::triangle::Triangle;
 #[derive(Clone)]
 pub struct Mesh {
     pub tris: Vec<Triangle>,
-    pub pos_x: f32,
-    pub proj_matrix: Matrix4x4,
     pub camera: Camera,
 }
 
 impl Mesh{
     pub fn new(ctx: &mut ggez::Context, camera: Camera) -> ggez::GameResult<Mesh> {
-        let size: (f32, f32) = ggez::graphics::drawable_size(ctx);
-
-        //projection matrix
-        let f_far: f32 = 10000.0;
-        let f_near: f32 = 0.1;
-        let f_fov: f32 = 90.0;
-        let f_aspect_ratio: f32 = size.1 / size.0;
-        let f_fov_rad = 1.0/ f32::tan(f_fov * 0.5 / 180.0 * 3.14159);
-
-        let mut proj_matrix = Matrix4x4{m: [[0.0; 4]; 4]};
-
-        proj_matrix.m[0][0] = f_aspect_ratio * f_fov_rad;
-        proj_matrix.m[1][1] = f_fov_rad;
-        proj_matrix.m[2][2] = f_far / (f_far - f_near);
-        proj_matrix.m[3][2] = (-f_far * f_near) / (f_far - f_near);
-        proj_matrix.m[2][3] = 1.0;
-        proj_matrix.m[3][3] = 0.0;
-
-        // Mesh
-        Ok(Mesh{tris: Vec::new(), pos_x: 0.0, proj_matrix: proj_matrix, camera: camera})
+        Ok(Mesh{tris: Vec::new(), camera: camera})
     }
 
     pub fn form_cube(&mut self){
@@ -225,15 +204,19 @@ impl Mesh{
         Ok(())
     }
 
+    pub fn painters_algorithm(&mut self) {
+        self.tris.sort_by(|b, a| a.center.z.partial_cmp(&b.center.z).unwrap());
+    }
+
     pub fn get_mesh_relative_camera(&mut self) -> Mesh{
         let mut transformed_mesh: Mesh = self.clone();
-        transformed_mesh.y_axis_rotation(self.camera.rotation.y, self.camera.position.x, self.camera.position.z - 0.1);
-        transformed_mesh.x_axis_rotation(self.camera.rotation.x, self.camera.position.y, self.camera.position.z - 0.1);
+        //transformed_mesh.y_axis_rotation(self.camera.rotation.y, self.camera.position.x, self.camera.position.z - 0.1);
+        //transformed_mesh.x_axis_rotation(self.camera.rotation.x, self.camera.position.y, self.camera.position.z - 0.1);
         //transformed_mesh.z_axis_rotation(self.camera.rotation.z, self.camera.position.x, self.camera.position.y);
 
-        transformed_mesh.increment_x(-self.camera.position.x);
-        transformed_mesh.increment_y(-self.camera.position.y);
-        transformed_mesh.increment_z(-self.camera.position.z);
+        //transformed_mesh.increment_x(-self.camera.position.x);
+        //transformed_mesh.increment_y(-self.camera.position.y);
+        //transformed_mesh.increment_z(-self.camera.position.z);
         transformed_mesh
     }
 }

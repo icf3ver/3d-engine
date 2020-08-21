@@ -10,5 +10,6 @@ edition = "2018"
 
 
 ggez = "*"
+nalgebra = "*"
 rand = "0.7.3"
 byteorder = "1.2.7"
