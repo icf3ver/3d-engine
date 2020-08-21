@@ -1,5 +1,4 @@
 mod camera;
-mod matrix4x4;
 mod matrix3x3;
 mod vec3d;
 mod triangle;

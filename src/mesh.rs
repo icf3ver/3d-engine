@@ -6,7 +6,6 @@ use std::io::prelude::*;
 use byteorder::{LittleEndian, ReadBytesExt};
 
 use crate::camera::Camera;
-use crate::matrix4x4::Matrix4x4;
 use crate::vec3d::Vec3d;
 use crate::triangle::Triangle;
 

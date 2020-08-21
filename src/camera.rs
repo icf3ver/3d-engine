@@ -1,4 +1,3 @@
-use crate::matrix4x4::Matrix4x4;
 use crate::matrix3x3::Matrix3x3;
 use crate::mesh::Mesh;
 use crate::triangle::Triangle;
