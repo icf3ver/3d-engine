@@ -9,6 +9,11 @@ use crate::camera::Camera;
 use crate::vec3d::Vec3d;
 use crate::triangle::Triangle;
 
+/// A Mesh is a 3D object made up of triangles.
+/// It also has a camera that is looking at it.
+/// 
+/// NOTE: Structure is subject to change
+/// 
 #[derive(Clone)]
 pub struct Mesh {
     pub tris: Vec<Triangle>,
@@ -16,10 +21,24 @@ pub struct Mesh {
 }
 
 impl Mesh{
-    pub fn new(ctx: &mut ggez::Context, camera: Camera) -> ggez::GameResult<Mesh> {
+    /// Creates a new Mesh with a camera
+    /// 
+    /// # Arguments
+    /// * `camera` - The Camera viewing the Mesh.
+    /// 
+    /// # Return
+    /// A GameRusult<Mesh> object
+    /// 
+    pub fn new(camera: Camera) -> ggez::GameResult<Mesh> {
         Ok(Mesh{tris: Vec::new(), camera: camera})
     }
 
+    /// Form a cube and add set it to the Mesh.
+    /// 
+    /// # Argumetns
+    /// * `self` - The Mesh the function was called for.
+    /// 
+    #[allow(dead_code)]
     pub fn form_cube(&mut self){
         self.tris = vec![
             // FRONT
@@ -48,42 +67,97 @@ impl Mesh{
         ];
     }
 
+    /// Rotates the Mesh arround the x-axis at the origin point.
+    /// 
+    /// # Arguments
+    /// * `self` - The Mesh the function was called for.
+    /// * `r` - The Amount rotated by.
+    /// * `origin_y` - The y position of the origin point.
+    /// * `origin_z` - The z position of the origin point.
+    /// 
+    #[allow(dead_code)]
     pub fn x_axis_rotation(&mut self, r: f32, origin_y: f32, origin_z: f32) {
         for i in 0..self.tris.len() {
             self.tris[i].x_axis_rotation(r, origin_y, origin_z);
         }
     }
 
+    /// Rotates the Mesh arround the y-axis at the origin point.
+    /// 
+    /// # Arguments
+    /// * `self` - The Mesh the function was called for.
+    /// * `r` - The Amount rotated by.
+    /// * `origin_x` - The x position of the origin point.
+    /// * `origin_z` - The z position of the origin point.
+    /// 
+    #[allow(dead_code)]
     pub fn y_axis_rotation(&mut self, r: f32, origin_x: f32, origin_z: f32) {
         for i in 0..self.tris.len() {
             self.tris[i].y_axis_rotation(r, origin_x, origin_z);
         }
     }
 
+    /// Rotates the Mesh arround the z-axis at the origin point.
+    /// 
+    /// # Arguments
+    /// * `self` - The Mesh the function was called for.
+    /// * `r` - The Amount rotated by.
+    /// * `origin_x` - The x position of the origin point.
+    /// * `origin_y` - The y position of the origin point.
+    /// 
+    #[allow(dead_code)]
     pub fn z_axis_rotation(&mut self, r: f32, origin_x: f32, origin_y: f32) {
         for i in 0..self.tris.len() {
             self.tris[i].z_axis_rotation(r, origin_x, origin_y);
         }
     }
 
-    pub fn increment_x(&mut self, x: f32){
+    /// Increment the Mesh x position by a number.
+    /// 
+    /// # Arguments 
+    /// * `self` - The Mesh this function was called for.
+    /// * `inc_x` - The number the x position will be incremented by.
+    /// 
+    #[allow(dead_code)]
+    pub fn increment_x(&mut self, inc_x: f32){
         for i in 0..self.tris.len() {
-            self.tris[i].increment_x(x);
+            self.tris[i].increment_x(inc_x);
         }
     }
 
-    pub fn increment_y(&mut self, y: f32){
+    /// Increment the Mesh y position by a number.
+    /// 
+    /// # Arguments 
+    /// * `self` - The Mesh this function was called for.
+    /// * `inc_y` - The number the y position will be incremented by.
+    /// 
+    #[allow(dead_code)]
+    pub fn increment_y(&mut self, inc_y: f32){
         for i in 0..self.tris.len() {
-            self.tris[i].increment_y(y);
+            self.tris[i].increment_y(inc_y);
         }
     }
 
-    pub fn increment_z(&mut self, z: f32){
+    /// Increment the Mesh z position by a number.
+    /// 
+    /// # Arguments 
+    /// * `self` - The Mesh this function was called for.
+    /// * `inc_z` - The number the z position will be incremented by.
+    /// 
+    #[allow(dead_code)]
+    pub fn increment_z(&mut self, inc_z: f32){
         for i in 0..self.tris.len() {
-            self.tris[i].increment_z(z);
+            self.tris[i].increment_z(inc_z);
         }
     }
 
+    /// Make a Mesh from a file.
+    /// 
+    /// # Arguments 
+    /// * `self` - The Mesh this function was called for.
+    /// * `filename` - The filename of the file containing the data.
+    /// 
+    #[allow(dead_code)]
     pub fn from_file(&mut self, filename: &str) {
         let file_type = filename.split('.').last().unwrap();
         if file_type == "obj" {
@@ -97,6 +171,12 @@ impl Mesh{
         }
     }
 
+    /// Make a Mesh from an obj file.
+    /// 
+    /// # Arguments 
+    /// * `self` - The Mesh this function was called for.
+    /// * `filename` - The filename of the obj file containing the data.
+    /// 
     pub fn from_obj(&mut self, filename: &str) {
         println!("In file {}", filename);
 
@@ -115,12 +195,18 @@ impl Mesh{
                 let mut e = line.split_whitespace();
                 e.next();
                 self.tris.push(Triangle::new(points[e.next().unwrap().parse::<usize>().unwrap()-1_usize],
-                                                    points[e.next().unwrap().parse::<usize>().unwrap()-1_usize],
-                                                    points[e.next().unwrap().parse::<usize>().unwrap()-1_usize]));
+                                             points[e.next().unwrap().parse::<usize>().unwrap()-1_usize],
+                                             points[e.next().unwrap().parse::<usize>().unwrap()-1_usize]));
             }
         }
     }
 
+    /// Make a Mesh from an stl binary file.
+    /// 
+    /// # Arguments 
+    /// * `self` - The Mesh this function was called for.
+    /// * `filename` - The filename of the stl binary file containing the data.
+    /// 
     pub fn from_stl_bin(&mut self, filename: &str) {
         println!("In file {}", filename);
 
@@ -130,7 +216,7 @@ impl Mesh{
         let mut header_buf = [0; 80];
         let header = file.read(&mut header_buf[..])
             .expect("Something went wrong reading the file");
-        let contents = String::from_utf8_lossy(&header_buf[..header]);
+        let _contents = String::from_utf8_lossy(&header_buf[..header]);
         
         // number of triangles
         let mut n_tris_buf = [0; 4];
@@ -174,6 +260,15 @@ impl Mesh{
         }
     }
 
+    /// Make a Mesh from an stl ascii file.
+    /// 
+    /// # Arguments 
+    /// * `self` - The Mesh this function was called for.
+    /// * `filename` - The filename of the stl ascii file containing the data.
+    /// 
+    /// # Return
+    /// Success status
+    /// 
     pub fn from_stl_ascii(&mut self, filename: &str) -> Result<(), std::io::Error> {
         println!("In file {}", filename);
 
@@ -201,21 +296,5 @@ impl Mesh{
             }
         }
         Ok(())
-    }
-
-    pub fn painters_algorithm(&mut self) {
-        self.tris.sort_by(|b, a| a.center.z.partial_cmp(&b.center.z).unwrap());
-    }
-
-    pub fn get_mesh_relative_camera(&mut self) -> Mesh{
-        let mut transformed_mesh: Mesh = self.clone();
-        //transformed_mesh.y_axis_rotation(self.camera.rotation.y, self.camera.position.x, self.camera.position.z - 0.1);
-        //transformed_mesh.x_axis_rotation(self.camera.rotation.x, self.camera.position.y, self.camera.position.z - 0.1);
-        //transformed_mesh.z_axis_rotation(self.camera.rotation.z, self.camera.position.x, self.camera.position.y);
-
-        //transformed_mesh.increment_x(-self.camera.position.x);
-        //transformed_mesh.increment_y(-self.camera.position.y);
-        //transformed_mesh.increment_z(-self.camera.position.z);
-        transformed_mesh
     }
 }

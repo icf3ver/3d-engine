@@ -1,8 +1,10 @@
 [package]
 name = "my-engine"
-version = "0.1.5"
+version = "0.2.0"
 authors = ["LukeB"]
 edition = "2018"
+description = "This 3D engine allows the user to display 3D Models. It was made using ggez and can not render very large models."
+readme = "README.md"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
