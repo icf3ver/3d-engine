@@ -4,16 +4,24 @@ A 3D engine made with ggez in rust.
 
 WARNING: This program may potentially trigger seizures for people with photosensitive epilepsy. Viewer discretion is advised.
 
-# V1
+# v0.1.0
+Basic Working algorithm for rendering 3d models.
 
-Basic Working algorithm for rendering 3d models
-
-# V2
-
+# v0.2.0
 Implements Multithreading
 Better projection Algorithm
 Crop triangles to fit screen
 Better comments.
+
+# v0.3.0
+changed movement more intuitive.
+Since on the 2d screen plane y is reversed I now compensate for that.
+Better render culling
+
+## Bugs targetted in this version
+ - Big triangles glitch.
+ - Clipping stack overflow error.
+![overflow](img/clipping_err.png)
 
 # Todo
  ## Bug Fix

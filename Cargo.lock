@@ -1167,11 +1167,10 @@ checksum = "d42e54f364a39ad5238e3072db2e8747785b37655368da756987d3b09ada91e0"
 
 [[package]]
 name = "my-engine"
-version = "0.2.0"
+version = "0.3.0"
 dependencies = [
  "byteorder",
  "ggez",
- "nalgebra",
  "rand 0.7.3",
 ]
 
