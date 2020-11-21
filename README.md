@@ -29,7 +29,6 @@ Cleaner code
  - Fix diagonal turning mirror error
  - Fix the big triangles glitch
  - Clipping stack overflow error
-![overflow](img/clipping_err.png)
  - <!> Clean lighting <!>
  ### UI
   + Export Stl and Obj
