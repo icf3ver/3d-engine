@@ -1,7 +1,7 @@
 # My 3D Engine
 A 3D engine made with ggez in rust.
 
-WARNING: <!> This program may potentially trigger seizures for people with photosensitive epilepsy. Viewer discretion is advised. <!>
+WARNING: This program may potentially trigger seizures for people with photosensitive epilepsy. Viewer discretion is advised.
 
 ## Description
 This is a 3D engine made with ggez and rust. I decided to make this project because I have always found the concept of 3D projection baffeling and wanted to understand it.
