@@ -1,8 +1,8 @@
+use crate::vec3d::Vec3d;
+use ggez::graphics::Vertex;
 use ggez::{self, nalgebra::geometry::Point2};
 use rand::prelude::*;
-use ggez::graphics::Vertex;
 use std::ops::Add;
-use crate::vec3d::Vec3d;
 
 /// A Triangle is a triangle with a normal, 3 vertecies, a
 /// color, a center point and its distance to the camera.
@@ -761,6 +761,7 @@ impl Triangle {
     }
 }
 
+// Triangle + Vec3d = Triangle
 impl Add<Vec3d> for Triangle {
     type Output = Triangle;
 

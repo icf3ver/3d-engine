@@ -10,7 +10,7 @@ readme = "README.md"
 
 [dependencies]
 
-ggez = "*"
+ggez = "0.5.1"
 rand = "0.7.3"
 byteorder = "1.3.4"
 

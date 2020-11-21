@@ -11,14 +11,8 @@ use scene::Scene;
 use vec3d::Vec3d;
 
 use ggez::{
-    self, 
-    event::KeyCode, 
-    graphics::Vertex, 
-    event, 
-    graphics, 
-    input::keyboard, 
-    nalgebra as na, 
-    timer::delta
+    self, event, event::KeyCode, graphics, graphics::Vertex, input::keyboard, nalgebra as na,
+    timer::delta,
 };
 
 /// Event Handler for a Mesh
@@ -169,15 +163,8 @@ fn main() -> ggez::GameResult {
 
     // Create Mesh
     let mut mesh = Mesh::new(Vec3d::new(0.0, 0.0, 0.0));
-    mesh.from_file("m.stl"); //note do not attempt to use too big files yet
+    mesh.from_file("models/xyz.stl");
 
-    let mut mesh1 = Mesh::new(Vec3d::new(0.0, 0.0, 0.0));
-    mesh1.form_cube();
-
-    let mut mesh2 = Mesh::new(Vec3d::new(0.0, 2.0, 0.0));
-    mesh2.form_cube();
-
-    // Create Scene
     let scene = &mut Scene::new(camera, vec![mesh])?;
 
     // Give Context and Mesh to GGez

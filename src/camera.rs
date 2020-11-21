@@ -1,9 +1,4 @@
-use crate::{
-    matrix3x3::Matrix3x3, 
-    mesh::Mesh, 
-    triangle::Triangle, 
-    vec3d::Vec3d
-};
+use crate::{matrix3x3::Matrix3x3, mesh::Mesh, triangle::Triangle, vec3d::Vec3d};
 
 use std::{sync::mpsc, thread};
 
@@ -42,6 +37,13 @@ impl Camera {
         }
     }
 
+    /// Rotates camera up
+    /// 
+    /// # Arguments
+    ///
+    /// * `self` - The Camera the function is being called for.
+    /// * `n` - Number of degrees to rotate by.
+    ///
     pub fn rotate_up(&mut self, n: f32) {
         let mut new_rt = self.rotation.x - n;
         while new_rt > 180.0 || new_rt < -180.0 {
@@ -55,6 +57,13 @@ impl Camera {
         self.rotation.x = new_rt;
     }
 
+    /// Rotates camera down
+    /// 
+    /// # Arguments
+    ///
+    /// * `self` - The Camera the function is being called for.
+    /// * `n` - Number of degrees to rotate by.
+    ///
     pub fn rotate_down(&mut self, n: f32) {
         let mut new_rt = self.rotation.x + n;
         while new_rt > 180.0 || new_rt < -180.0 {
@@ -68,6 +77,13 @@ impl Camera {
         self.rotation.x = new_rt;
     }
 
+    /// Rotates camera left
+    /// 
+    /// # Arguments
+    ///
+    /// * `self` - The Camera the function is being called for.
+    /// * `n` - Number of degrees to rotate by.
+    ///
     pub fn rotate_left(&mut self, n: f32) {
         let mut new_rt = self.rotation.y - n;
         while new_rt > 180.0 || new_rt < -180.0 {
@@ -81,6 +97,13 @@ impl Camera {
         self.rotation.y = new_rt;
     }
 
+    /// Rotates camera right
+    /// 
+    /// # Arguments
+    ///
+    /// * `self` - The Camera the function is being called for.
+    /// * `n` - Number of degrees to rotate by.
+    ///
     pub fn rotate_right(&mut self, n: f32) {
         let mut new_rt = self.rotation.y + n;
         while new_rt > 180.0 || new_rt < -180.0 {

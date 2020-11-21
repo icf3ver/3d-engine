@@ -1,9 +1,4 @@
-use ggez::{
-    self, 
-    nalgebra::geometry::Point2, 
-    graphics::Vertex, 
-    nalgebra as na
-};
+use ggez::{self, graphics::Vertex, nalgebra as na, nalgebra::geometry::Point2};
 
 use std::ops::{Add, AddAssign, Mul, Sub};
 
@@ -29,7 +24,6 @@ impl Vec3d {
     pub fn new(x: f32, y: f32, z: f32) -> Vec3d {
         Vec3d { x: x, y: y, z: z }
     }
-
 
     /// Rotates the Vec3d around the x-axis at the origin point.
     ///
@@ -156,6 +150,7 @@ impl Add for Vec3d {
     }
 }
 
+/// Vec3d += Vec3d
 impl AddAssign for Vec3d {
     fn add_assign(&mut self, rhs: Vec3d) {
         self.x += rhs.x;

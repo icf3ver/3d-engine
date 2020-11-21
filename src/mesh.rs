@@ -1,6 +1,9 @@
-use byteorder::{LittleEndian, ReadBytesExt};
-use std::{fs::{self, File}, io::prelude::*};
 use crate::{triangle::Triangle, vec3d::Vec3d};
+use byteorder::{LittleEndian, ReadBytesExt};
+use std::{
+    fs::{self, File},
+    io::prelude::*,
+};
 
 /// A Mesh is a 3D object made up of triangles.
 /// It also has a camera that is looking at it.

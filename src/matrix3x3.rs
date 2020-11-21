@@ -8,10 +8,6 @@ pub struct Matrix3x3 {
 }
 
 impl Matrix3x3 {
-    #[allow(dead_code)]
-    pub fn new(matrix: [[f32; 3]; 3]) -> Matrix3x3 {
-        Matrix3x3 { m: matrix }
-    }
     /// Form a Matrix 3x3 from 3 Vec3d's
     ///
     /// # Argments
@@ -32,6 +28,19 @@ impl Matrix3x3 {
         }
     }
 
+    /// Calculate the determinant
+    ///
+    /// matrix (a, b, c)
+    ///        (d, e, f)
+    ///        (g, h, i)
+    /// determinant of a 3x3 matrix is |A| = a(ei − fh)
+    ///                                    − b(di − fg)
+    ///                                    + c(dh − eg)
+    ///
+    /// # Arguments
+    ///
+    /// * `self` - The Matrix3x3 the function was called for
+    ///
     #[allow(dead_code)]
     pub fn determinant(&mut self) -> f32 {
         let det: f32 = self.m[0][0]

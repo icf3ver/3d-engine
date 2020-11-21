@@ -1,36 +1,37 @@
 # My 3D Engine
-
 A 3D engine made with ggez in rust.
 
-WARNING: This program may potentially trigger seizures for people with photosensitive epilepsy. Viewer discretion is advised.
+WARNING: <!> This program may potentially trigger seizures for people with photosensitive epilepsy. Viewer discretion is advised. <!>
 
-# v0.1.0
+## Description
+This is a 3D engine made with ggez and rust. I decided to make this project because I have always found the concept of 3D projection baffeling and wanted to understand it.
+
+NOTE: At the moment this program does all the calculations on the CPU...
+
+## Versions
+### v0.1.0
 Basic Working algorithm for rendering 3d models.
 
-# v0.2.0
+### v0.2.0
 Implements Multithreading
 Better projection Algorithm
 Crop triangles to fit screen
 Better comments.
 
-# v0.3.0
-changed movement more intuitive.
-Since on the 2d screen plane y is reversed I now compensate for that.
+### v0.3.0
+Changed movement to be more intuitive
+Compensate for reversed y axis
 Better render culling
+Cleaner code
 
-## Bugs targetted in this version
- - Big triangles glitch.
- - Clipping stack overflow error.
-![overflow](img/clipping_err.png)
-
-# Todo
- ## Bug Fix
+## Todo
+ ### Bug Fix
  - Fix diagonal turning mirror error
  - Fix the big triangles glitch
  - Clipping stack overflow error
 ![overflow](img/clipping_err.png)
  - <!> Clean lighting <!>
- ## UI
+ ### UI
   + Export Stl and Obj
   + Object manipulation
    - Rotation
@@ -42,3 +43,6 @@ Better render culling
   + Lock look
   + vertex mode
   + transparent mode
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
